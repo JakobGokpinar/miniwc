@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Build artifacts
+*.o
+*.out
+miniwc
+test
+
+# Debug symbols
+*.dSYM
+
+# Generated assembly
+*.s
