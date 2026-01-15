@@ -22,3 +22,40 @@ int main(void) {
 
     return 0;
 }
+
+//Phase1
+/*int main(void) {
+    int x = 10;
+    int *p = &x;
+
+    printf("x = %d\n", x);
+    printf("&x = %p\n", (void*)&x);
+    printf("p = %p\n", (void*)p);
+    printf("*p = %d\n", *p);
+
+    *p = 20;
+    printf("x after = %d\n", x);
+ 
+    return 0;
+}*/
+
+//Phase2
+/*int* bad(void) {
+    int x = 42;
+    return &x;
+}
+int* good(void) {
+    int *x = malloc(sizeof(int));
+    *x = 42;
+    return x;
+}
+int main(void) {
+    int *a = bad();
+    int *b = good();
+
+    printf("bad: %d\n", *a); //undefined behaviour
+    printf("good: %d\n", *b);
+
+    free(b);
+    return 0;
+}*/
