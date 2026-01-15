@@ -1,30 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void) {
-    int a[5] = {10, 20, 30, 40, 50};
-    int *p = a;
-
-    printf("&a = %p\n", (void*)&a);
-    printf("&a[0] = %p\n", (void*)&a[0]);
-    printf("p = %p\n", (void*)p);
-    printf("sizeof(a) = %zu\n", sizeof(a)); //sizeof returns size_t = unsigned long
-    printf("sizeof(p) = %zu\n", sizeof(p));
-
-    printf("a[1] = %d\n", a[1]);
-    printf("a[2] = %d\n", a[2]);
-
-    a[1] = 100;
-    //pointer arithmetic
-    *(p+2) = 110; //If you remove the *, you stop accessing memory and you are left with an address only.
-
-    printf("a[1] = %d\n", a[1]);
-    printf("a[2] = %d\n", a[2]);
-
-    return 0;
-}
-
-//Phase1
-/*int main(void) {
+/* Phase 1: Pointer Basics */
+void phase1_basic_pointer(void) {
     int x = 10;
     int *p = &x;
 
@@ -35,27 +13,59 @@ int main(void) {
 
     *p = 20;
     printf("x after = %d\n", x);
- 
-    return 0;
-}*/
-
-//Phase2
-/*int* bad(void) {
-    int x = 42;
-    return &x;
 }
+
+/* Phase 2: Stack vs Heap */
+int* bad(void) {
+    int x = 42;
+    return &x;   // dangling pointer
+}
+
 int* good(void) {
     int *x = malloc(sizeof(int));
     *x = 42;
     return x;
 }
-int main(void) {
+
+void phase2_stack_vs_heap(void) {
     int *a = bad();
     int *b = good();
 
-    printf("bad: %d\n", *a); //undefined behaviour
+    printf("bad (UB): %d\n", *a);
     printf("good: %d\n", *b);
 
     free(b);
+}
+
+/* Phase 3: Arrays & Pointer Arithmetic */
+void phase3_arrays_and_pointers(void) {
+    int a[5] = {10, 20, 30, 40, 50};
+    int *p = a;
+
+    printf("&a      = %p\n", (void*)&a);
+    printf("&a[0]   = %p\n", (void*)&a[0]);
+    printf("p       = %p\n", (void*)p);
+
+    printf("sizeof(a) = %zu\n", sizeof(a));
+    printf("sizeof(p) = %zu\n", sizeof(p));
+
+    a[1] = 100;
+    *(p + 2) = 110;
+
+    printf("a[1] = %d\n", a[1]);
+    printf("a[2] = %d\n", a[2]);
+}
+
+
+int main(void) {
+    printf("=== Phase 1 ===\n");
+    phase1_basic_pointer();
+
+    printf("\n=== Phase 2 ===\n");
+    phase2_stack_vs_heap();
+
+    printf("\n=== Phase 3 ===\n");
+    phase3_arrays_and_pointers();
+
     return 0;
-}*/
+}

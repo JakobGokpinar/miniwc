@@ -22,14 +22,6 @@ void write_int(int x) {
     write(1, buf, i);
 }
 
-size_t my_strlen(const char *s) {
-    size_t len = 0;
-    while (s[len] != '\0') {
-        len++;
-    }
-    return len;
-}
-
 size_t count_chars(const char *buf, size_t len);
 
 int main(int argc, char *argv[]) {
@@ -50,13 +42,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
- /*write(1, "miniwc starting\n", 17);
-    write(1, "\n", 1);
-    for (int i = 0; i < argc; i++) {
-        write(1, "arg[", 4);
-        write_int(i);
-        write(1, "] = ", 4);
-        write(1, argv[i], n);
-        write(1, "\n", 1);
-}*/
